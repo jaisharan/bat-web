@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busy Business | AI Sales Automation for Social Media</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #4F46E5 0%, #9333EA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 glass-nav border-b border-gray-200/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="router('home')">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white mr-3 shadow-lg">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-800">Busy Business</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" onclick="router('home', 'features')" class="text-slate-600 hover:text-indigo-600 font-medium transition">Features</a>
+                    <a href="#" onclick="router('home', 'how-it-works')" class="text-slate-600 hover:text-indigo-600 font-medium transition">How it Works</a>
+                    <a href="#" onclick="router('privacy')" class="text-slate-600 hover:text-indigo-600 font-medium transition">Privacy</a>
+                    <button onclick="router('home', 'contact')" class="bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium hover:bg-indigo-600 transition shadow-lg hover:shadow-indigo-500/30 flex items-center gap-2">
+                        <span>Chat with Us</span>
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-indigo-600 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+                <a href="#" onclick="router('home', 'features'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Features</a>
+                <a href="#" onclick="router('home', 'how-it-works'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">How it Works</a>
+                <a href="#" onclick="router('privacy'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Privacy Policy</a>
+                <a href="#" onclick="router('terms'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Terms & Conditions</a>
+                <a href="#" onclick="router('home', 'contact'); toggleMobileMenu()" class="block px-3 py-3 mt-4 text-center rounded-lg text-base font-medium bg-indigo-600 text-white shadow-md">Chat with Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="app-content" class="pt-20">
+        <!-- Content injected via JS -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center text-white mb-4">
+                        <div class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center mr-2">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-bold text-lg">Busy Business</span>
+                    </div>
+                    <p class="text-sm text-slate-400 max-w-sm">
+                        Scaling sales without scaling headcount. The AI-powered sales assistant for modern businesses on WhatsApp, Instagram, and Facebook.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" onclick="router('home')" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#" onclick="router('home', 'contact')" class="hover:text-white transition">Contact Us</a></li>
+                        <li><a href="#" onclick="router('privacy')" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" onclick="router('terms')" class="hover:text-white transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-indigo-400"></i>
+                            <a href="tel:8681913204" class="hover:text-white transition">8681913204</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i>
+                            <a href="mailto:batworkspace@gmail.com" class="hover:text-white transition">batworkspace@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-indigo-400"></i>
+                            <span>Chennai, India</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>&copy; 2024 Busy Business. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-white"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-white"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA & TEMPLATES ---
+        
+        const homeTemplate = `
+            <!-- Hero Section -->
+            <section class="relative pt-20 pb-32 overflow-hidden">
+                <div class="hero-blob bg-purple-300 w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply blur-3xl animate-blob"></div>
+                <div class="hero-blob bg-indigo-300 w-96 h-96 rounded-full top-0 right-0 mix-blend-multiply blur-3xl animate-blob animation-delay-2000"></div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-medium mb-8">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                        </span>
+                        Now integrated with WhatsApp, Instagram & FB
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6">
+                        Turn Social DMs into <br/>
+                        <span class="gradient-text">Confirmed Orders</span>
+                    </h1>
+                    <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-600 mb-10">
+                        Stop manually replying to "Price please?". Our AI Sales Agent handles inquiries, checks inventory, and closes deals 24/7.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button onclick="scrollToSection('contact')" class="px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-indigo-600 transition shadow-xl hover:shadow-indigo-500/20 flex items-center justify-center gap-2">
+                            Start Automating Today
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                        <button onclick="scrollToSection('features')" class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-semibold hover:bg-slate-50 transition flex items-center justify-center gap-2">
+                            View Features
+                        </button>
+                    </div>
+
+                    <!-- Mockup Visual -->
+                    <div class="mt-16 relative mx-auto max-w-4xl">
+                        <div class="bg-slate-900 rounded-2xl shadow-2xl p-2 border border-slate-800">
+                            <div class="bg-slate-800 rounded-xl overflow-hidden aspect-[16/9] relative flex items-center justify-center">
+                                <!-- Abstract UI Representation -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900"></div>
+                                <div class="grid grid-cols-3 gap-4 p-8 w-full h-full opacity-90">
+                                    <!-- Left: Chat List -->
+                                    <div class="col-span-1 bg-slate-700/30 rounded-lg p-4 space-y-3 hidden md:block">
+                                        <div class="h-2 w-1/2 bg-slate-600 rounded mb-4"></div>
+                                        <div class="flex gap-2 items-center p-2 bg-indigo-500/20 border border-indigo-500/30 rounded">
+                                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center"><i data-lucide="message-square" class="w-4 h-4 text-green-400"></i></div>
+                                            <div class="flex-1 space-y-1">
+                                                <div class="h-2 w-16 bg-slate-500 rounded"></div>
+                                                <div class="h-2 w-10 bg-slate-600 rounded"></div>
+                                            </div>
+                                        </div>
+                                         <div class="flex gap-2 items-center p-2 rounded opacity-50">
+                                            <div class="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center"><i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i></div>
+                                            <div class="flex-1 space-y-1">
+                                                <div class="h-2 w-20 bg-slate-500 rounded"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Center: Chat Window -->
+                                    <div class="col-span-3 md:col-span-2 bg-slate-700/50 rounded-lg p-4 flex flex-col justify-between relative border border-slate-600">
+                                        <div class="absolute top-4 right-4 text-xs text-green-400 flex items-center gap-1">
+                                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> AI Agent Active
+                                        </div>
+                                        <div class="space-y-4">
+                                            <div class="flex gap-3">
+                                                <div class="w-8 h-8 bg-slate-500 rounded-full"></div>
+                                                <div class="bg-slate-600 p-3 rounded-lg rounded-tl-none text-xs text-slate-200 max-w-[80%]">
+                                                    Hi! Is the Blue Vintage Dress still in stock? Size M.
+                                                </div>
+                                            </div>
+                                            <div class="flex gap-3 flex-row-reverse">
+                                                <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center"><i data-lucide="bot" class="w-4 h-4 text-white"></i></div>
+                                                <div class="bg-indigo-600/20 border border-indigo-500/30 p-3 rounded-lg rounded-tr-none text-xs text-indigo-100 max-w-[80%]">
+                                                    Yes! We have 3 units of the Blue Vintage Dress (Size M) remaining in inventory. The price is ₹1,499. Would you like to place an order?
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="h-10 bg-slate-800 rounded mt-4 border border-slate-600"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Problem/Solution Section -->
+            <section class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <h2 class="text-3xl font-bold text-slate-900 mb-6">Drowning in DMs? <br><span class="text-indigo-600">Let AI handle the chaos.</span></h2>
+                            <div class="space-y-6">
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="x-circle" class="w-6 h-6 text-red-600"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-slate-900">The Problem</h3>
+                                        <p class="text-slate-600 mt-1">Manual replies take too long. By the time you check inventory and reply, the customer has moved on. Leads get lost in a messy inbox.</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold text-lg text-slate-900">The Busy Business Solution</h3>
+                                        <p class="text-slate-600 mt-1">Our AI agent interacts instantly, checks your real-time stock, and guides the customer to payment. It only escalates complex issues to you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-100 to-purple-100 rounded-3xl transform rotate-3"></div>
+                            <div class="relative bg-white p-8 rounded-3xl shadow-xl border border-slate-100">
+                                <h3 class="font-bold text-xl mb-6 flex items-center gap-2">
+                                    <i data-lucide="activity" class="text-indigo-600"></i> Live Performance
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                        <span class="text-slate-600">Response Time</span>
+                                        <span class="font-bold text-green-600">Instant (AI)</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                        <span class="text-slate-600">Lead Conversion</span>
+                                        <span class="font-bold text-indigo-600">+45% Increase</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                        <span class="text-slate-600">Human Workload</span>
+                                        <span class="font-bold text-indigo-600">-80% Reduction</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="py-24 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold text-slate-900">Everything you need to automate</h2>
+                        <p class="mt-4 text-lg text-slate-600">A complete toolkit for social-first businesses.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Feature 1 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition group">
+                            <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition duration-300">
+                                <i data-lucide="message-circle" class="w-7 h-7 text-blue-600 group-hover:text-white transition"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Omnichannel Chatbot</h3>
+                            <p class="text-slate-600 leading-relaxed">Handles conversations across WhatsApp, Instagram, and Facebook seamlessly from one dashboard.</p>
+                        </div>
+                        
+                        <!-- Feature 2 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition group">
+                            <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition duration-300">
+                                <i data-lucide="box" class="w-7 h-7 text-purple-600 group-hover:text-white transition"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Smart Inventory</h3>
+                            <p class="text-slate-600 leading-relaxed">Manage products and stock levels. The AI checks this in real-time before confirming orders to customers.</p>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition group">
+                            <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition duration-300">
+                                <i data-lucide="bot" class="w-7 h-7 text-indigo-600 group-hover:text-white transition"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Intent Detection</h3>
+                            <p class="text-slate-600 leading-relaxed">The AI distinguishes between a casual browser and a serious buyer, prioritizing high-value leads.</p>
+                        </div>
+
+                        <!-- Feature 4 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition group">
+                            <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition duration-300">
+                                <i data-lucide="user-check" class="w-7 h-7 text-green-600 group-hover:text-white transition"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Human Handoff</h3>
+                            <p class="text-slate-600 leading-relaxed">Tool-driven logic knows when to stop. Complex negotiations are politely escalated to you.</p>
+                        </div>
+
+                        <!-- Feature 5 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition group">
+                            <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-600 transition duration-300">
+                                <i data-lucide="truck" class="w-7 h-7 text-orange-600 group-hover:text-white transition"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Post-Order Updates</h3>
+                            <p class="text-slate-600 leading-relaxed">Automatically sends delivery notifications and collects feedback, just like a major e-commerce site.</p>
+                        </div>
+
+                        <!-- Feature 6 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition group">
+                            <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-pink-600 transition duration-300">
+                                <i data-lucide="smartphone" class="w-7 h-7 text-pink-600 group-hover:text-white transition"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Mobile First SaaS</h3>
+                            <p class="text-slate-600 leading-relaxed">Manage your entire business from your phone. Perfect for entrepreneurs on the go.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- How it Works Section -->
+             <section id="how-it-works" class="py-24 bg-white overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl font-bold text-slate-900">How Busy Business Works</h2>
+                    </div>
+                    
+                    <div class="relative">
+                        <!-- Connector Line -->
+                        <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -z-10 transform -translate-y-1/2"></div>
+
+                        <div class="grid md:grid-cols-3 gap-12">
+                            <!-- Step 1 -->
+                            <div class="bg-white p-6 text-center">
+                                <div class="w-16 h-16 mx-auto bg-slate-900 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 border-4 border-white shadow-lg">1</div>
+                                <h3 class="text-xl font-bold mb-2">Connect Accounts</h3>
+                                <p class="text-slate-600">Link your Instagram, WhatsApp, and Facebook business pages to the Busy Business app.</p>
+                            </div>
+                             <!-- Step 2 -->
+                             <div class="bg-white p-6 text-center">
+                                <div class="w-16 h-16 mx-auto bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 border-4 border-white shadow-lg">2</div>
+                                <h3 class="text-xl font-bold mb-2">Upload Inventory</h3>
+                                <p class="text-slate-600">Add your products and pricing. The AI learns your catalog instantly.</p>
+                            </div>
+                             <!-- Step 3 -->
+                             <div class="bg-white p-6 text-center">
+                                <div class="w-16 h-16 mx-auto bg-slate-900 text-white rounded-full flex items-center justify-center text-2xl font-bold mb-6 border-4 border-white shadow-lg">3</div>
+                                <h3 class="text-xl font-bold mb-2">Watch Sales Grow</h3>
+                                <p class="text-slate-600">The AI engages incoming leads, answers questions, and closes orders automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA / Contact Section -->
+            <section id="contact" class="py-24 bg-slate-900 text-white">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h2 class="text-4xl font-bold mb-6">Ready to automate your business?</h2>
+                    <p class="text-xl text-slate-400 mb-10">We help small and mid-scale companies scale effortlessly. Get in touch with our team to see how Busy Business can fit your workflow.</p>
+                    
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/10">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <a href="tel:8681913204" class="group flex flex-col items-center justify-center p-6 bg-slate-800 rounded-xl hover:bg-indigo-600 transition duration-300">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/20">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <span class="text-sm text-slate-400 uppercase tracking-wider mb-1 group-hover:text-indigo-200">Call Us</span>
+                                <span class="text-xl font-bold">8681913204</span>
+                            </a>
+
+                            <a href="mailto:batworkspace@gmail.com" class="group flex flex-col items-center justify-center p-6 bg-slate-800 rounded-xl hover:bg-indigo-600 transition duration-300">
+                                <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-white/20">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <span class="text-sm text-slate-400 uppercase tracking-wider mb-1 group-hover:text-indigo-200">Email Us</span>
+                                <span class="text-xl font-bold">batworkspace@gmail.com</span>
+                            </a>
+                        </div>
+                        <div class="mt-8 pt-8 border-t border-white/10">
+                            <p class="text-slate-300">Or chat directly regarding specific requirements:</p>
+                             <button class="mt-4 px-8 py-3 bg-green-600 hover:bg-green-500 rounded-lg font-medium transition flex items-center justify-center gap-2 mx-auto w-full md:w-auto">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                                Chat on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        const privacyTemplate = `
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <h1 class="text-3xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
+                <div class="prose prose-slate max-w-none text-slate-600">
+                    <p class="mb-4 text-sm text-slate-500">Last updated: October 24, 2023</p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">1. Introduction</h3>
+                    <p class="mb-4">Welcome to Busy Business. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website or use our mobile application and tell you about your privacy rights and how the law protects you.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">2. Data We Collect</h3>
+                    <p class="mb-4">We may collect, use, store and transfer different kinds of personal data about you which we have grouped together follows:</p>
+                    <ul class="list-disc pl-5 mb-4 space-y-2">
+                        <li><strong>Identity Data:</strong> includes first name, last name, username or similar identifier.</li>
+                        <li><strong>Contact Data:</strong> includes billing address, delivery address, email address and telephone numbers.</li>
+                        <li><strong>Business Data:</strong> includes inventory lists, pricing, and customer interaction logs required for the service operation.</li>
+                        <li><strong>Technical Data:</strong> includes internet protocol (IP) address, your login data, browser type and version.</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">3. How We Use Your Data</h3>
+                    <p class="mb-4">We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
+                    <ul class="list-disc pl-5 mb-4 space-y-2">
+                        <li>To provide the SaaS automation service and AI features.</li>
+                        <li>To manage your account and subscription.</li>
+                        <li>To facilitate orders and inventory management.</li>
+                        <li>To improve our website, products/services, marketing or customer relationships.</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">4. Data Security</h3>
+                    <p class="mb-4">We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way. Our multi-tenant architecture ensures your business data is isolated from other clients.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">5. Contact Details</h3>
+                    <p class="mb-4">If you have any questions about this privacy policy or our privacy practices, please contact us at: <a href="mailto:batworkspace@gmail.com" class="text-indigo-600">batworkspace@gmail.com</a></p>
+                </div>
+            </div>
+        `;
+
+        const termsTemplate = `
+             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <h1 class="text-3xl font-bold text-slate-900 mb-8">Terms and Conditions</h1>
+                <div class="prose prose-slate max-w-none text-slate-600">
+                    <p class="mb-4 text-sm text-slate-500">Last updated: October 24, 2023</p>
+                    
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">1. Agreement to Terms</h3>
+                    <p class="mb-4">These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and Busy Business ("we," "us" or "our"), concerning your access to and use of the Busy Business software application and website.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">2. Service Description</h3>
+                    <p class="mb-4">Busy Business provides a mobile-based SaaS business automation tool, including inventory management, UI for management, and social media AI interaction modules. We grant you a limited, non-exclusive, non-transferable, revocable license to use our Services.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">3. User Responsibilities</h3>
+                    <p class="mb-4">You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree not to use the service for any illegal or unauthorized purpose.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">4. Platform Integration</h3>
+                    <p class="mb-4">Our service integrates with third-party platforms (WhatsApp, Instagram, Facebook). You acknowledge that your use of these features is also subject to the terms and conditions of those respective platforms. We are not responsible for account suspensions or limitations imposed by third-party platforms.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">5. Limitation of Liability</h3>
+                    <p class="mb-4">In no event will we or our directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages arising from your use of the service.</p>
+
+                    <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-3">6. Contact Us</h3>
+                    <p class="mb-4">To resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at: <br><strong>Phone:</strong> 8681913204 <br><strong>Email:</strong> batworkspace@gmail.com</p>
+                </div>
+            </div>
+        `;
+
+        // --- ROUTER LOGIC ---
+
+        const contentDiv = document.getElementById('app-content');
+
+        function router(route, sectionId = null) {
+            // 1. Scroll to top
+            window.scrollTo(0, 0);
+
+            // 2. Render content based on route
+            if (route === 'home') {
+                contentDiv.innerHTML = homeTemplate;
+                // Re-initialize Lucide icons for new content
+                lucide.createIcons();
+                
+                // 3. Handle specific section jumps after rendering
+                if (sectionId) {
+                    setTimeout(() => {
+                        const element = document.getElementById(sectionId);
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            } else if (route === 'privacy') {
+                contentDiv.innerHTML = privacyTemplate;
+            } else if (route === 'terms') {
+                contentDiv.innerHTML = termsTemplate;
+            }
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                router('home', id);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Initialize Router
+        document.addEventListener('DOMContentLoaded', () => {
+            router('home');
+            lucide.createIcons();
+        });
+
+    </script>
+</body>
+</html>
