@@ -1,141 +1,262 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Busy Business | AI Sales Automation for Social Media</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #4F46E5 0%, #9333EA 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero-blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-blob {
+        position: absolute;
+        filter: blur(80px);
+        z-index: -1;
+        opacity: 0.4;
+      }
     </style>
-</head>
-<body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white">
-
+  </head>
+  <body
+    class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white"
+  >
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 glass-nav border-b border-gray-200/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="router('home')">
-                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white mr-3 shadow-lg">
-                        <i data-lucide="zap" class="w-6 h-6"></i>
-                    </div>
-                    <span class="font-bold text-xl tracking-tight text-slate-800">Busy Business</span>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#" onclick="router('home', 'features')" class="text-slate-600 hover:text-indigo-600 font-medium transition">Features</a>
-                    <a href="#" onclick="router('home', 'how-it-works')" class="text-slate-600 hover:text-indigo-600 font-medium transition">How it Works</a>
-                    <a href="#" onclick="router('privacy')" class="text-slate-600 hover:text-indigo-600 font-medium transition">Privacy</a>
-                    <button onclick="router('home', 'contact')" class="bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium hover:bg-indigo-600 transition shadow-lg hover:shadow-indigo-500/30 flex items-center gap-2">
-                        <span>Chat with Us</span>
-                        <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-indigo-600 focus:outline-none p-2">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
+    <nav
+      class="fixed w-full z-50 top-0 glass-nav border-b border-gray-200/50 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div
+            class="flex-shrink-0 flex items-center cursor-pointer"
+            onclick="router('home')"
+          >
+            <div
+              class="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center text-white mr-3 shadow-lg"
+            >
+              <i data-lucide="zap" class="w-6 h-6"></i>
             </div>
-        </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800"
+              >Busy Business</span
+            >
+          </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
-            <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
-                <a href="#" onclick="router('home', 'features'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Features</a>
-                <a href="#" onclick="router('home', 'how-it-works'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">How it Works</a>
-                <a href="#" onclick="router('privacy'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Privacy Policy</a>
-                <a href="#" onclick="router('terms'); toggleMobileMenu()" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50">Terms & Conditions</a>
-                <a href="#" onclick="router('home', 'contact'); toggleMobileMenu()" class="block px-3 py-3 mt-4 text-center rounded-lg text-base font-medium bg-indigo-600 text-white shadow-md">Chat with Us</a>
-            </div>
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8 items-center">
+            <a
+              href="#"
+              onclick="router('home', 'features')"
+              class="text-slate-600 hover:text-indigo-600 font-medium transition"
+              >Features</a
+            >
+            <a
+              href="#"
+              onclick="router('home', 'how-it-works')"
+              class="text-slate-600 hover:text-indigo-600 font-medium transition"
+              >How it Works</a
+            >
+            <a
+              href="privacy.html"
+              class="text-slate-600 hover:text-indigo-600 font-medium transition"
+              >Privacy</a
+            >
+            <button
+              onclick="router('home', 'contact')"
+              class="bg-slate-900 text-white px-6 py-2.5 rounded-full font-medium hover:bg-indigo-600 transition shadow-lg hover:shadow-indigo-500/30 flex items-center gap-2"
+            >
+              <span>Chat with Us</span>
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button
+              onclick="toggleMobileMenu()"
+              class="text-slate-600 hover:text-indigo-600 focus:outline-none p-2"
+            >
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
         </div>
+      </div>
+
+      <!-- Mobile Menu Panel -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+          <a
+            href="#"
+            onclick="
+              router('home', 'features');
+              toggleMobileMenu();
+            "
+            class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
+            >Features</a
+          >
+          <a
+            href="#"
+            onclick="
+              router('home', 'how-it-works');
+              toggleMobileMenu();
+            "
+            class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
+            >How it Works</a
+          >
+          <a
+            href="#"
+            onclick="
+              router('privacy');
+              toggleMobileMenu();
+            "
+            class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
+            >Privacy Policy</a
+          >
+          <a
+            href="#"
+            onclick="
+              router('terms');
+              toggleMobileMenu();
+            "
+            class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-indigo-600 hover:bg-slate-50"
+            >Terms & Conditions</a
+          >
+          <a
+            href="#"
+            onclick="
+              router('home', 'contact');
+              toggleMobileMenu();
+            "
+            class="block px-3 py-3 mt-4 text-center rounded-lg text-base font-medium bg-indigo-600 text-white shadow-md"
+            >Chat with Us</a
+          >
+        </div>
+      </div>
     </nav>
 
     <!-- MAIN CONTENT CONTAINER -->
     <main id="app-content" class="pt-20">
-        <!-- Content injected via JS -->
+      <!-- Content injected via JS -->
     </main>
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-300 py-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="col-span-1 md:col-span-2">
-                    <div class="flex items-center text-white mb-4">
-                        <div class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center mr-2">
-                            <i data-lucide="zap" class="w-5 h-5"></i>
-                        </div>
-                        <span class="font-bold text-lg">Busy Business</span>
-                    </div>
-                    <p class="text-sm text-slate-400 max-w-sm">
-                        Scaling sales without scaling headcount. The AI-powered sales assistant for modern businesses on WhatsApp, Instagram, and Facebook.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-white font-semibold mb-4">Company</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" onclick="router('home')" class="hover:text-white transition">Home</a></li>
-                        <li><a href="#" onclick="router('home', 'contact')" class="hover:text-white transition">Contact Us</a></li>
-                        <li><a href="#" onclick="router('privacy')" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" onclick="router('terms')" class="hover:text-white transition">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-white font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="phone" class="w-4 h-4 text-indigo-400"></i>
-                            <a href="tel:8681913204" class="hover:text-white transition">8681913204</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i>
-                            <a href="mailto:batworkspace@gmail.com" class="hover:text-white transition">batworkspace@gmail.com</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="map-pin" class="w-4 h-4 text-indigo-400"></i>
-                            <span>Chennai, India</span>
-                        </li>
-                    </ul>
-                </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="col-span-1 md:col-span-2">
+            <div class="flex items-center text-white mb-4">
+              <div
+                class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center mr-2"
+              >
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </div>
+              <span class="font-bold text-lg">Busy Business</span>
             </div>
-            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-                <p>&copy; 2024 Busy Business. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                    <a href="#" class="hover:text-white"><i data-lucide="facebook" class="w-5 h-5"></i></a>
-                    <a href="#" class="hover:text-white"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                </div>
-            </div>
+            <p class="text-sm text-slate-400 max-w-sm">
+              Scaling sales without scaling headcount. The AI-powered sales
+              assistant for modern businesses on WhatsApp, Instagram, and
+              Facebook.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-4">Company</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a
+                  href="#"
+                  onclick="router('home')"
+                  class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="router('home', 'contact')"
+                  class="hover:text-white transition"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="router('privacy')"
+                  class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="router('terms')"
+                  class="hover:text-white transition"
+                  >Terms & Conditions</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold mb-4">Contact</h3>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-center gap-2">
+                <i data-lucide="phone" class="w-4 h-4 text-indigo-400"></i>
+                <a href="tel:8681913204" class="hover:text-white transition"
+                  >8681913204</a
+                >
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4 text-indigo-400"></i>
+                <a
+                  href="mailto:batworkspace@gmail.com"
+                  class="hover:text-white transition"
+                  >batworkspace@gmail.com</a
+                >
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-indigo-400"></i>
+                <span>Chennai, India</span>
+              </li>
+            </ul>
+          </div>
         </div>
+        <div
+          class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500"
+        >
+          <p>&copy; 2024 Busy Business. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white"
+              ><i data-lucide="instagram" class="w-5 h-5"></i
+            ></a>
+            <a href="#" class="hover:text-white"
+              ><i data-lucide="facebook" class="w-5 h-5"></i
+            ></a>
+            <a href="#" class="hover:text-white"
+              ><i data-lucide="linkedin" class="w-5 h-5"></i
+            ></a>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- DATA & TEMPLATES ---
-        
-        const homeTemplate = `
+      // --- DATA & TEMPLATES ---
+
+      const homeTemplate = `
             <!-- Hero Section -->
             <section class="relative pt-20 pb-32 overflow-hidden">
                 <div class="hero-blob bg-purple-300 w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply blur-3xl animate-blob"></div>
@@ -407,7 +528,7 @@
             </section>
         `;
 
-        const privacyTemplate = `
+      const privacyTemplate = `
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <h1 class="text-3xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
                 <div class="prose prose-slate max-w-none text-slate-600">
@@ -443,7 +564,7 @@
             </div>
         `;
 
-        const termsTemplate = `
+      const termsTemplate = `
              <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <h1 class="text-3xl font-bold text-slate-900 mb-8">Terms and Conditions</h1>
                 <div class="prose prose-slate max-w-none text-slate-600">
@@ -470,54 +591,53 @@
             </div>
         `;
 
-        // --- ROUTER LOGIC ---
+      // --- ROUTER LOGIC ---
 
-        const contentDiv = document.getElementById('app-content');
+      const contentDiv = document.getElementById("app-content");
 
-        function router(route, sectionId = null) {
-            // 1. Scroll to top
-            window.scrollTo(0, 0);
+      function router(route, sectionId = null) {
+        // 1. Scroll to top
+        window.scrollTo(0, 0);
 
-            // 2. Render content based on route
-            if (route === 'home') {
-                contentDiv.innerHTML = homeTemplate;
-                // Re-initialize Lucide icons for new content
-                lucide.createIcons();
-                
-                // 3. Handle specific section jumps after rendering
-                if (sectionId) {
-                    setTimeout(() => {
-                        const element = document.getElementById(sectionId);
-                        if (element) element.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
-            } else if (route === 'privacy') {
-                contentDiv.innerHTML = privacyTemplate;
-            } else if (route === 'terms') {
-                contentDiv.innerHTML = termsTemplate;
-            }
+        // 2. Render content based on route
+        if (route === "home") {
+          contentDiv.innerHTML = homeTemplate;
+          // Re-initialize Lucide icons for new content
+          lucide.createIcons();
+
+          // 3. Handle specific section jumps after rendering
+          if (sectionId) {
+            setTimeout(() => {
+              const element = document.getElementById(sectionId);
+              if (element) element.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          }
+        } else if (route === "privacy") {
+          contentDiv.innerHTML = privacyTemplate;
+        } else if (route === "terms") {
+          contentDiv.innerHTML = termsTemplate;
         }
+      }
 
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                router('home', id);
-            }
+      function scrollToSection(id) {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        } else {
+          router("home", id);
         }
+      }
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
 
-        // Initialize Router
-        document.addEventListener('DOMContentLoaded', () => {
-            router('home');
-            lucide.createIcons();
-        });
-
+      // Initialize Router
+      document.addEventListener("DOMContentLoaded", () => {
+        router("home");
+        lucide.createIcons();
+      });
     </script>
-</body>
+  </body>
 </html>
